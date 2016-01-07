@@ -1,0 +1,35 @@
+{% extends "site_base.html" %}
+{% load staticfiles bootstrap %}
+{% load i18n %}
+
+{% block title %} {{ block.super }} {% endblock %}
+
+
+{% block body_class %}appinstances{% endblock %}
+
+{% block body_outer %}
+
+    <div class="row">
+        {% block body %}
+            <div class="page-header">
+            <h2 class="page-title">{% trans 'Edit' %}</h2>
+            </div>
+            <ul class="nav nav-pills nav-stacked col-md-2">
+                <li class="active"><a href="#tab_general" data-toggle="pill">{% trans 'General' %}</a></li>
+            </ul>
+            {{ app_form.media }}
+            <form id='addForm' class="form-horizontal" role="form" method="post"
+                  enctype="multipart/form-data"> {% csrf_token %}
+                <div class="tab-content col-md-10">
+                    <div class="tab-pane active" id="tab_general">
+                        {{ app_form|bootstrap }}
+                    </div>
+                </div><!-- tab content -->
+                <div id="load" class="form-group">
+                    <button class="btn btn-primary pull-right" title="Save" type="submit">{% trans 'Save' %}</button>
+                </div>
+            </form>
+        {% endblock body %}
+    {% block sidebar %}{% endblock sidebar %}
+    </div>
+{% endblock body_outer %}

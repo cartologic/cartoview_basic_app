@@ -1,0 +1,22 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+
+{% block title %}{# Add your custom page title here #}{{ basic_app.title }}{% endblock %}
+
+{% block extra_head %}{# Add extra js/css to html head #}{% endblock %}
+
+{% block body_class %}{% endblock %}
+
+{% block body_outer %}
+    {#  Add your content in this block #}
+    <div class="row">
+        {% block body %}
+            <h1>{% trans 'Cartoview Basic App' %}</h1>
+            <p>
+                {{ basic_app.title }}
+            </p>
+        {% endblock body %}
+        {% block sidebar %}
+        {% endblock sidebar %}
+    </div>
+{% endblock body_outer %}
